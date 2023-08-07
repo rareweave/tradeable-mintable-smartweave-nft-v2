@@ -9,8 +9,8 @@ local editNft = require("functions/edit-nft")
 BN = require("bn")
 
 function handle(state, action) 
-  if (not action.input) or (type(action.input) == 'table') or (type(action.input["function"]) == 'string') then
-    ContractError("Invalid input")
+  if (not action.input) or (type(action.input) ~= 'table') or (type(action.input["function"]) ~= 'string') then
+    error("Invalid input")
   end
   local functionMap={
     transfer=transfer,
@@ -26,10 +26,10 @@ function handle(state, action)
     error("Function "+action.input["function"]+" not found")
   end
   local res
-  local status,err=pcall(function ()
+  local ok,err=pcall(function ()
     res = selectedFunction(state,action)
   end)
-  if not status then
+  if ok then
     return res
   else
     error(err)
