@@ -14,7 +14,7 @@ const arweave = Arweave.init({
 async function deployCode() {
   try {
     // Loading contract source and initial state from files
-    const contractSrc = fs.readFileSync(path.join(__dirname, "./dist/contract.lua"), "utf8");
+    const contractSrc = fs.readFileSync(path.join(__dirname, "./bundle.lua"), "utf8");
     const initialState = JSON.parse(fs.readFileSync(path.join(__dirname, "./init-state.json"), "utf8"))
 
     const walletAddress = await arweave.wallets.getAddress(jwk);

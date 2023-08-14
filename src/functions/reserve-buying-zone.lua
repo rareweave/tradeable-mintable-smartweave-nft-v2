@@ -1,6 +1,4 @@
 local function handle(state, action)
-    local target = SmartWeave.transaction.target
-    local quantity = SmartWeave.transaction.quantity
     local owner = SmartWeave.transaction.owner
     local id = SmartWeave.transaction.id
 
