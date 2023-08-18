@@ -3,7 +3,8 @@ local function handle(state, action)
     assert(state.owner == action.caller, "Caller should own NFT")
 
     local price = action.input.price
-    local priceIsValid = (type(price) == "number" or type(price) == "string") and BN(price) > BN(1)
+    local priceIsValid =not price or (type(price) == "number" or type(price) == "string") and BN(price) > BN(1)
+    if not price then price = "0" end
 
     assert(priceIsValid, "Invalid price: must be a positive number")
     assert(type(action.input.description) == "string", "Description should be string")

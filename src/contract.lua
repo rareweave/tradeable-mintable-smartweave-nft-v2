@@ -6,7 +6,8 @@ local reserveBuyingZone = require("functions/reserve-buying-zone")
 local unlist = require("functions/unlist")
 local finalizeBuy = require("functions/finalize-buy")
 local editNft = require("functions/edit-nft")
-BN = require("bn")
+local BNlib = require("bn")
+BN=BNlib(256)
 
 function handle(state, action) 
   if (not action.input) or (type(action.input) ~= 'table') or (type(action.input["function"]) ~= 'string') then
