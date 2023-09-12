@@ -10,7 +10,7 @@ local BNlib = require("bn")
 BN=BNlib(256)
 
 function handle(state, action) 
-  if (not action.input) or (type(action.input) ~= 'table') or (type(action.input["function"]) ~= 'string') then
+  if (not action.input) or (type(action.input) ~= 'userdata') or (type(action.input["function"]) ~= 'string') then
     error("Invalid input")
   end
   local functionMap={
